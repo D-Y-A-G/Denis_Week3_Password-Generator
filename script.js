@@ -61,7 +61,8 @@ var upperCase = [
 ];
 var numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 var specialChar = ["!", "@", "#", "%", "&", "*", "(", ")", "_", "+"];
-var length = [];
+//var passwordGen = [lowerCase + upperCase + numbers + Symbol + passLength];
+//var pasLength = "";
 
 // Write password to the #password input
 function writePassword() {
@@ -76,41 +77,56 @@ generateBtn.addEventListener("click", writePassword);
 
 //Write function to prompt user for input determinig values
 
-function criteria() {
+function generatePassword() {
   var btn1 = document
     .getElementById("generate")
     .addEventListener("click", function () {
       var passLength = prompt(
         "Please select the length between 8 - 128 characters"
       );
-
+      console.log(passLength);
       if (passLength < 8) {
         alert("Please choose a value between 8 and 128!😱");
 
         return;
       }
       if (passLength > 128) {
-        alert("Please choose a value between 8 and 128!");
+        alert("Please choose a value between 8 and 128!😅");
         return;
+      }
+
+      for (var i = 0; i < passLength; i++) {
+        console.log(i);
       }
 
       var passUpper = confirm(
         "Do you want to include Uppercase letters in password?"
       );
-      //console.log(passUpper); checking
+
+      if (passUpper === true) {
+        console.log(passUpper);
+      }
+      
 
       var passNumber = confirm("Would you like to include a numbers?");
-      console.log(passNumber);
-
+      //console.log(passNumber); to check
+      if (passNumber === true) {
+        console.log(passNumber);
+      }
       var passSymbol = confirm("And do you want to include a symbol?");
-      console.log(passSymbol);
-
-      //if user says yes add criteria for each selection if no selection add msg " 😨 "
+      //console.log(passSymbol); to check
+      if (passSymbol === true) {
+        console.log(passSymbol);
+      }
+      //
+      
+      
     });
 }
 
-criteria();
+//function generatePassword() {} // function to output value to box - need to work on output and values in here
 
+generatePassword();
 // criteria(); need to define criteria
 
 /* function generatePassword(){
