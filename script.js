@@ -61,9 +61,9 @@ var upperCase = [
 ];
 var numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 var specialChar = ["!", "@", "#", "%", "&", "*", "(", ")", "_", "+"];
-var passwordGen = [lowerCase + upperCase + numbers + Symbol + passLength];
-var passLength = [];
-
+var passwordGen = "";
+var randomCharacters = "";
+var choice = "";
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
@@ -72,118 +72,74 @@ function writePassword() {
   passwordText.value = password;
 }
 
+//////////////////////////////////////////////////////////////////////
+
+function generatePassword() {
+  var passLength = prompt(
+    "Please select the length between 8 - 128 characters"
+  );
+  //console.log(passLength);
+  if (passLength < 8) {
+    alert("Please choose a value between 8 and 128!😱");
+
+    return;
+  }
+  if (passLength > 128) {
+    alert("Please choose a value between 8 and 128!😅");
+    return;
+  }
+
+  if (passLength > 8 && passLength < 128) {
+    passwordGen.length = passLength;
+    //console.log(passwordGen.length);
+  }
+
+  var passLower = confirm("Do you want to add a lowercase letter?");
+
+  if (passLower === true) {
+    //console.log(passLower);
+  }
+
+  var passUpper = confirm(
+    "Do you want to add an UPPERCASE letter in password?"
+  );
+
+  if (passUpper === true) {
+    //console.log(passUpper);
+  }
+
+  var passNumber = confirm("Would you like to include a number?");
+
+  if (passNumber === true) {
+    //console.log(passNumber);
+  }
+
+  var passSymbol = confirm("And do you want to include a symbol?");
+
+  if (passSymbol === true) {
+    //console.log(passSymbol);
+  }
+
+  if (
+    passNumber === true &&
+    passSymbol === true &&
+    passUpper === true &&
+    passLower === true
+  ) {
+    passwordGen = passLength;
+    console.log(passwordGen);
+  }
+}
+function randomCharacters() {
+  return Math.floor(Math.random() * passNumber.length); // push variables into radomCharacters
+}
+console.log(randomCharacters);
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
 //Write function to prompt user for input determinig values
 
-function generatePassword() {
-  var btn1 = document
-    .getElementById("generate")
-    .addEventListener("click", function () {
-      var passLength = prompt(
-        "Please select the length between 8 - 128 characters"
-      );
-      console.log(passLength);
-      if (passLength < 8) {
-        alert("Please choose a value between 8 and 128!😱");
-
-        return;
-      }
-      if (passLength > 128) {
-        alert("Please choose a value between 8 and 128!😅");
-        return;
-      }
-
-      for (var i = 0; i < passLength; i++) {
-        console.log(i);
-      }
-
-      var passLower = confirm("Do you want to add a lowercase letter?");
-
-      if (passLower === true) {
-        console.log(passLower);
-      }
-
-      var passUpper = confirm(
-        "Do you want to add an UPPERCASE letter in password?"
-      );
-
-      if (passUpper === true) {
-        console.log(passUpper);
-      }
-
-      var passNumber = confirm("Would you like to include a numbers?");
-
-      if (passNumber === true) {
-        console.log(passNumber);
-      }
-      var passSymbol = confirm("And do you want to include a symbol?");
-
-      if (passSymbol === true) {
-        console.log(passSymbol);
-      }
-
-      if (
-        passNumber === true &&
-        passSymbol === true &&
-        passUpper === true &&
-        passLower === true
-      ) {
-        passwordGen = passLength.concat(
-          passLower,
-          passUpper,
-          passSymbol,
-          passNumber
-        );
-        console.log(passwordGen);
-      }
-    });
-}
-
-//function generatePassword() {} // function to output value to box - need to work on output and values in here
-
-generatePassword();
-
 //var randomPassword = [];
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  passLength = prompt("Please select your password lenght between 8 and 128 characters :)");
-  console.log("Password Length" + passLength);
-
-  if (!passLength) {
-    alert("Your password is 12345678 Goodluck!!!");
-  }  
-
-} testing*/
 
 /* WHEN I click the button to generate a password
 THEN I am presented with a series of prompts for password criteria
