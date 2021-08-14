@@ -61,9 +61,8 @@ var upperCase = [
 ];
 var numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 var specialChar = ["!", "@", "#", "%", "&", "*", "(", ")", "_", "+"];
-var passwordGen = "";
-var randomCharacters = "";
-var randomPassword = "";
+var randomCharSelection = [];
+var randomPassword = [];
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
@@ -79,72 +78,68 @@ function generatePassword() {
     "Please select the length between 8 - 128 characters"
   );
   //console.log(passLength);
-  if (passLength < 8) {
+  if (choiceLength < 8) {
     alert("Please choose a value between 8 and 128!😱");
-
-    return;
+    return generatePassword();
   }
-  if (passLength > 128) {
+  if (choiceLength > 128) {
     alert("Please choose a value between 8 and 128!😅");
-    return;
+    return generatePassword();
   }
 
+  if (choiceLower === passLength) {
+    alert("Please choose a value between 8 and 128!😱");
+    return generatePassword();
+  }
   if (passLength > 8 && passLength < 128) {
     passwordGen.length = passLength;
+    document.write(passLength);
     //console.log(passwordGen.length);
   }
 
-  var passLower = confirm("Do you want to add a lowercase letter?");
+  var choiceLower = confirm("Do you want to add a lowercase letter?");
 
-  if (passLower === true) {
+  if (choiceLower === true) {
     //console.log(passLower);
   }
 
-  var passUpper = confirm(
+  var choiceUpper = confirm(
     "Do you want to add an UPPERCASE letter in password?"
   );
 
-  if (passUpper === true) {
+  if (choiceUpper === true) {
     //console.log(passUpper);
   }
 
-  var passNumber = confirm("Would you like to include a number?");
+  var choiceNumber = confirm("Would you like to include a number?");
 
-  if (passNumber === true) {
+  if (choiceNumber === true) {
     //console.log(passNumber);
   }
 
-  var passSymbol = confirm("And do you want to include a symbol?");
+  var choiceSymbol = confirm("And do you want to include a symbol?");
 
-  if (passSymbol === true) {
+  if (choiceSymbol === true) {
     //console.log(passSymbol);
   }
 
-  if (
-    passNumber === true &&
-    passSymbol === true &&
-    passUpper === true &&
-    passLower === true
-  ) {
-    passwordGen = passLength;
-    console.log(passwordGen);
-
-    for (var i = 0; i < passwordGen; i++) {
-      // work on this function need to check variables
-      randomPassword.push(
-        randomCharacters[Math.floor(Math.random() * randomPassword.length)]
-      );
-      return randomPassword.join("");
-    }
+  //Build array of possible characters based on users criteria called randomSelection place on top
+  if (choiceUpper) {
+    randomCharSelection = randomCharSelection.concat(upperCase); // selecting randomcharselection to use value input by user
   }
+  if (choiceLower) {
+    randomCharSelection = randomCharSelection.concat(lowerCase);
+  }
+}
 
-  /* if (passLower && passUpper && passSymbol && passNumber) {
+for (var i = 0; i < passLength; i++) {
+  var choiceResult = 
+}
+/* if (passLower && passUpper && passSymbol && passNumber) {
     choice = lowerCase.concat(upperCase, numbers, specialChar, passwordGen);
     console.log(choice); 
   } */
-}
 
-console.log(passwordGen);
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
