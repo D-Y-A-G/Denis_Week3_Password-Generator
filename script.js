@@ -63,7 +63,7 @@ var numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 var specialChar = ["!", "@", "#", "%", "&", "*", "(", ")", "_", "+"];
 var passwordGen = "";
 var randomCharacters = "";
-var choice = "";
+var randomPassword = "";
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
@@ -128,12 +128,23 @@ function generatePassword() {
   ) {
     passwordGen = passLength;
     console.log(passwordGen);
+
+    for (var i = 0; i < passwordGen; i++) {
+      // work on this function need to check variables
+      randomPassword.push(
+        randomCharacters[Math.floor(Math.random() * randomPassword.length)]
+      );
+      return randomPassword.join("");
+    }
   }
+
+  /* if (passLower && passUpper && passSymbol && passNumber) {
+    choice = lowerCase.concat(upperCase, numbers, specialChar, passwordGen);
+    console.log(choice); 
+  } */
 }
-function randomCharacters() {
-  return Math.floor(Math.random() * passNumber.length); // push variables into radomCharacters
-}
-console.log(randomCharacters);
+
+console.log(passwordGen);
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
