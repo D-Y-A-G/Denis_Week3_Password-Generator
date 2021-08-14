@@ -61,8 +61,10 @@ var upperCase = [
 ];
 var numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 var specialChar = ["!", "@", "#", "%", "&", "*", "(", ")", "_", "+"];
-var randomCharSelection = [];
+var randomCharSelection = []; // selector to store user choice to randomize
 var randomPassword = [];
+var passwordLength = [];
+var choiceLength = [];
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
@@ -74,7 +76,7 @@ function writePassword() {
 //////////////////////////////////////////////////////////////////////
 
 function generatePassword() {
-  var passLength = prompt(
+  var choiceLength = prompt(
     "Please select the length between 8 - 128 characters"
   );
   //console.log(passLength);
@@ -87,10 +89,6 @@ function generatePassword() {
     return generatePassword();
   }
 
-  if (choiceLower === passLength) {
-    alert("Please choose a value between 8 and 128!😱");
-    return generatePassword();
-  }
   if (passLength > 8 && passLength < 128) {
     passwordGen.length = passLength;
     document.write(passLength);
@@ -133,7 +131,10 @@ function generatePassword() {
 }
 
 for (var i = 0; i < passLength; i++) {
-  var choiceResult = 
+  var choiceResult =
+    randomCharSelection[Math.floor(Math.random() * randomCharSelection.length)];
+  choiceLength.push(choiceResult);
+  console.log(choiceResult);
 }
 /* if (passLower && passUpper && passSymbol && passNumber) {
     choice = lowerCase.concat(upperCase, numbers, specialChar, passwordGen);
