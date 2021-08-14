@@ -61,8 +61,8 @@ var upperCase = [
 ];
 var numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 var specialChar = ["!", "@", "#", "%", "&", "*", "(", ")", "_", "+"];
-//var passwordGen = [lowerCase + upperCase + numbers + Symbol + passLength];
-//var pasLength = "";
+var passwordGen = [lowerCase + upperCase + numbers + Symbol + passLength];
+var passLength = [];
 
 // Write password to the #password input
 function writePassword() {
@@ -99,37 +99,55 @@ function generatePassword() {
         console.log(i);
       }
 
+      var passLower = confirm("Do you want to add a lowercase letter?");
+
+      if (passLower === true) {
+        console.log(passLower);
+      }
+
       var passUpper = confirm(
-        "Do you want to include Uppercase letters in password?"
+        "Do you want to add an UPPERCASE letter in password?"
       );
 
       if (passUpper === true) {
         console.log(passUpper);
       }
-      
 
       var passNumber = confirm("Would you like to include a numbers?");
-      //console.log(passNumber); to check
+
       if (passNumber === true) {
         console.log(passNumber);
       }
       var passSymbol = confirm("And do you want to include a symbol?");
-      //console.log(passSymbol); to check
+
       if (passSymbol === true) {
         console.log(passSymbol);
       }
-      //
-      
-      
+
+      if (
+        passNumber === true &&
+        passSymbol === true &&
+        passUpper === true &&
+        passLower === true
+      ) {
+        passwordGen = passLength.concat(
+          passLower,
+          passUpper,
+          passSymbol,
+          passNumber
+        );
+        console.log(passwordGen);
+      }
     });
 }
 
 //function generatePassword() {} // function to output value to box - need to work on output and values in here
 
 generatePassword();
-// criteria(); need to define criteria
 
-/* function generatePassword(){
+//var randomPassword = [];
+
+
   
 
 
