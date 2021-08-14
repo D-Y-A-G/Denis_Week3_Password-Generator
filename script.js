@@ -89,10 +89,10 @@ function generatePassword() {
     return generatePassword();
   }
 
-  if (passLength > 8 && passLength < 128) {
-    passwordGen.length = passLength;
-    document.write(passLength);
-    //console.log(passwordGen.length);
+  if (choiceLength > 8 && choiceLength < 128) {
+    choiceLength.length = choiceLength;
+    document.write(choiceLength);
+    //console.log(choiceLength.length);
   }
 
   var choiceLower = confirm("Do you want to add a lowercase letter?");
@@ -121,16 +121,26 @@ function generatePassword() {
     //console.log(passSymbol);
   }
 
-  //Build array of possible characters based on users criteria called randomSelection place on top
+  //if statement conditios to get user inpit and then .concat to add criteria to generated password.
+
   if (choiceUpper) {
     randomCharSelection = randomCharSelection.concat(upperCase); // selecting randomcharselection to use value input by user
+    console.log(randomCharSelection);
   }
   if (choiceLower) {
     randomCharSelection = randomCharSelection.concat(lowerCase);
   }
+
+  if (choiceNumber) {
+    randomCharSelection = randomCharSelection.concat(choiceNumber);
+  }
+
+  if (choiceSymbol) {
+    randomCharSelection = randomCharSelection.concat(choiceSymbol);
+  }
 }
 
-for (var i = 0; i < passLength; i++) {
+for (var i = 0; i < choiceLength; i++) {
   var choiceResult =
     randomCharSelection[Math.floor(Math.random() * randomCharSelection.length)];
   choiceLength.push(choiceResult);
