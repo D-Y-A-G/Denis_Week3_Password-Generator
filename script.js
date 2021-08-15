@@ -59,7 +59,7 @@ var upperCase = [
   "Y",
   "Z",
 ];
-var numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+var numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 var specialChar = ["!", "@", "#", "%", "&", "*", "(", ")", "_", "+"];
 
 // Write password to the #password input
@@ -132,11 +132,11 @@ function generatePassword() {
   }
 
   if (choiceNumber) {
-    randomCharSelection = randomCharSelection.concat(choiceNumber);
+    randomCharSelection = randomCharSelection.concat(numbers);
   }
 
   if (choiceSymbol) {
-    randomCharSelection = randomCharSelection.concat(choiceSymbol);
+    randomCharSelection = randomCharSelection.concat(specialChar);
   }
 
   for (var i = 0; i < choiceLength; i++) {
