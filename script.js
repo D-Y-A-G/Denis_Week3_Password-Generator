@@ -61,10 +61,7 @@ var upperCase = [
 ];
 var numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 var specialChar = ["!", "@", "#", "%", "&", "*", "(", ")", "_", "+"];
-var randomCharSelection = []; // selector to store user choice to randomize
-var randomPassword = [];
-var passwordLength = [];
-var choiceLength = [];
+
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
@@ -74,6 +71,9 @@ function writePassword() {
 }
 
 //////////////////////////////////////////////////////////////////////
+
+var randomCharSelection = []; // selector to store user choice to randomize
+var randomPassword = [];
 
 function generatePassword() {
   var choiceLength = prompt(
@@ -91,7 +91,7 @@ function generatePassword() {
 
   if (choiceLength > 8 && choiceLength < 128) {
     choiceLength.length = choiceLength;
-    document.write(choiceLength);
+
     //console.log(choiceLength.length);
   }
 
@@ -125,7 +125,7 @@ function generatePassword() {
 
   if (choiceUpper) {
     randomCharSelection = randomCharSelection.concat(upperCase); // selecting randomcharselection to use value input by user
-    console.log(randomCharSelection);
+    //console.log(randomCharSelection); check random
   }
   if (choiceLower) {
     randomCharSelection = randomCharSelection.concat(lowerCase);
@@ -138,13 +138,17 @@ function generatePassword() {
   if (choiceSymbol) {
     randomCharSelection = randomCharSelection.concat(choiceSymbol);
   }
-}
 
-for (var i = 0; i < choiceLength; i++) {
-  var choiceResult =
-    randomCharSelection[Math.floor(Math.random() * randomCharSelection.length)];
-  choiceLength.push(choiceResult);
-  console.log(choiceResult);
+  for (var i = 0; i < choiceLength; i++) {
+    var randomizer = (userSelection =
+      randomCharSelection[
+        Math.floor(Math.random() * randomCharSelection.length)
+      ]);
+
+    randomPassword.push(randomizer);
+  }
+
+  return randomPassword.join("");
 }
 /* if (passLower && passUpper && passSymbol && passNumber) {
     choice = lowerCase.concat(upperCase, numbers, specialChar, passwordGen);
